@@ -1,0 +1,41 @@
+#! /bin/sh
+
+PATH=JUPYTER_SETUP_BIN:/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin
+NAME=jupyter
+DAEMON='JUPYTER_SETUP_DAEMON'
+DAEMON_ARGS='JUPYTER_SETUP_DAEMON_ARGS'
+PIDFILE='JUPYTER_SETUP_PID_FILE'
+SCRIPTNAME=/etc/init.d/$NAME
+LOG=JUPYTER_SETUP_LOG
+
+# Exit if the package is not installed
+[ -x "$DAEMON" ] || exit 0
+
+case "$1" in
+  start)
+    $DAEMON $DAEMON_ARGS &>> $LOG
+    if [[ $? -eq 0 ]]; then
+      echo $! > $PIDFILE
+      exit 0
+    else
+      exit 255
+    fi
+  ;;
+  stop)
+    pid=$(cat $PIDFILE)
+    kill $pid
+    if [[ $? -eq 0 ]]; then
+      exit 0
+    else
+      exit 255
+    fi
+  ;;
+  restart)
+    $0 stop
+    $0 start
+  ;;
+  *)
+    echo "doesn' support option $1"
+    exit 255
+  ;;
+esac

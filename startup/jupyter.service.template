@@ -1,0 +1,11 @@
+[Unit]
+Description = The Jupyter Notebook Server
+After = network.target remote-fs.target nss-lookup.target
+
+[Service]
+User = JUPYTER_SETUP_USER
+ExecStart = /usr/sbin/jupyter start
+ExecStop = /usr/sbin/jupyter stop
+
+[Install]
+WantedBy = multi-user.target

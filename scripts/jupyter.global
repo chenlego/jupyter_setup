@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# jupyter notebook server run user
+JUPYTER_USER='jupyter'
+
+# anaconda version
+ANACONDA_VER='Anaconda3-4.4.0-Linux-x86_64.sh'
+
+# installation dir
+ANACONDA_ROOT='/opt/anaconda'
+ANACONDA_BIN="${ANACONDA_ROOT}/bin"
+
+# config dir
+JUPYTER_CONF_DIR='/etc/jupyter'
+CONFIG="${JUPYTER_CONF_DIR}/jupyter_notebook_config.py"
+
+# apache dir
+SHARE_DOCUMENT_ROOT='/var/www/jupyter'
+
+# systemd
+JUPYTER_SERVICE='jupyter.service'
+JUPYTER_STARTUP_SCRIPT='/usr/sbin/jupyter'
+SYSTEMD_DIR="/etc/systemd/system"
+
+# Log
+JUPYTER_LOG_DIR="/var/log/jupyter"
+JUPYTER_LOG="$JUPYTER_LOG_DIR/jupyter.log"
+
+# Pid
+JUPYTER_PID_DIR='/var/run/jupyter'
+JUPYTER_PID_FILE="${JUPYTER_PID_DIR}/jupyter.pid"

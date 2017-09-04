@@ -1,0 +1,7 @@
+[I 07:20:07.787 NotebookApp] Serving notebooks from local directory: /home/legochen/jupyter_setup/startup
+[I 07:20:07.787 NotebookApp] 0 active kernels 
+[I 07:20:07.787 NotebookApp] The Jupyter Notebook is running at: http://localhost:8888/
+[I 07:20:07.787 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[W 07:20:07.787 NotebookApp] No web browser found: could not locate runnable browser.
+[C 07:20:16.520 NotebookApp] received signal 15, stopping
+[I 07:20:16.524 NotebookApp] Shutting down kernels
