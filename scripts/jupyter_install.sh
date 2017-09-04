@@ -62,6 +62,11 @@ if [[ ! -d ${JUPYTER_PID_DIR} ]]; then
   chown $JUPYTER_USER $JUPYTER_PID_DIR
 fi
 
+if [[ ! -d ${JUPYTER_NOEBOOK_DIR} ]]; then
+  mkdir -p ${JUPYTER_NOEBOOK_DIR}
+  chown $JUPYTER_USER ${JUPYTER_NOEBOOK_DIR}
+fi
+
 ########################################################
 echo "============================"
 echo "=== Setup startup config ==="
@@ -69,7 +74,7 @@ echo "============================"
 # Generate startup config and script
 JUPYTER_SETUP_BIN="$ANACONDA_BIN"
 JUPYTER_SETUP_DAEMON="${ANACONDA_BIN}/jupyter-notebook"
-JUPYTER_SETUP_DAEMON_ARGS="--config=$CONFIG"
+JUPYTER_SETUP_DAEMON_ARGS="--config=$CONFIG --notebook-dir=${JUPYTER_NOEBOOK_DIR}"
 cat ${STARTUP_CONFIG_DIR}/jupyter.script.template | sed -e "s#JUPYTER_SETUP_BIN#$JUPYTER_SETUP_BIN#g" \
     -e "s#JUPYTER_SETUP_DAEMON_ARGS#$JUPYTER_SETUP_DAEMON_ARGS#g" \
     -e "s#JUPYTER_SETUP_DAEMON#$JUPYTER_SETUP_DAEMON#g" \

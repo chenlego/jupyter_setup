@@ -29,3 +29,6 @@ JUPYTER_LOG="$JUPYTER_LOG_DIR/jupyter.log"
 # Pid
 JUPYTER_PID_DIR='/var/run/jupyter'
 JUPYTER_PID_FILE="${JUPYTER_PID_DIR}/jupyter.pid"
+
+# notebook dir
+JUPYTER_NOEBOOK_DIR="${ANACONDA_ROOT}/notebooks"
