@@ -4,8 +4,8 @@ After = network.target remote-fs.target nss-lookup.target
 
 [Service]
 User = JUPYTER_SETUP_USER
-ExecStart = /usr/sbin/jupyter start
-ExecStop = /usr/sbin/jupyter stop
+ExecStart = JUPYTER_SETUP_STARTUP_SCRIPT start
+ExecStop = JUPYTER_SETUP_STARTUP_SCRIPT stop
 
 [Install]
 WantedBy = multi-user.target

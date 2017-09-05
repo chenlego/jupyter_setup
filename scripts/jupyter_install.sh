@@ -65,6 +65,7 @@ fi
 if [[ ! -d ${JUPYTER_NOEBOOK_DIR} ]]; then
   mkdir -p ${JUPYTER_NOEBOOK_DIR}
   chown $JUPYTER_USER ${JUPYTER_NOEBOOK_DIR}
+  chmod 755 ${JUPYTER_NOEBOOK_DIR}
 fi
 
 ########################################################
@@ -83,18 +84,9 @@ cat ${STARTUP_CONFIG_DIR}/jupyter.script.template | sed -e "s#JUPYTER_SETUP_BIN#
     -e "s#JUPYTER_SETUP_PID_FILE#${JUPYTER_PID_FILE}#g" \
     > ${STARTUP_CONFIG_DIR}/jupyter.tmp
 mv -f ${STARTUP_CONFIG_DIR}/jupyter.tmp ${JUPYTER_STARTUP_SCRIPT}
-chmod +x /usr/sbin/jupyter
+chmod +x ${JUPYTER_STARTUP_SCRIPT}
 
 # add startup services
-cat ${STARTUP_CONFIG_DIR}/jupyter.service.template | sed -e "s#JUPYTER_SETUP_USER#${JUPYTER_USER}#g" > ${SYSTEMD_DIR}/${JUPYTER_SERVICE}
-systemctl enable jupyter.service
-
-# configure Apache
-#mkdir -p $SHARE_DIR
-#chown -R nobody:nobody $SHARE_DIR
-
-# config for Admin UI
-#cp ./conf/httpd/jupyter_admin.conf
-
-# config for Share
-#cp ./conf/httpd/jupyter_admin.conf
+cat ${STARTUP_CONFIG_DIR}/jupyter.service.template | sed -e "s#JUPYTER_SETUP_USER#${JUPYTER_USER}#g" \
+    -e "s#JUPYTER_SETUP_STARTUP_SCRIPT#${JUPYTER_STARTUP_SCRIPT}#g" > ${SYSTEMD_DIR}/${JUPYTER_SERVICE}
+systemctl enable ${JUPYTER_SERVICE}

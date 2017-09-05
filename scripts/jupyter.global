@@ -2,6 +2,7 @@
 
 # jupyter notebook server run user
 JUPYTER_USER='jupyter'
+JUPYTER_GUEST='jupyter_ro'
 
 # anaconda version
 ANACONDA_VER='Anaconda3-4.4.0-Linux-x86_64.sh'
@@ -13,6 +14,7 @@ ANACONDA_BIN="${ANACONDA_ROOT}/bin"
 # config dir
 JUPYTER_CONF_DIR='/etc/jupyter'
 CONFIG="${JUPYTER_CONF_DIR}/jupyter_notebook_config.py"
+CONFIG_FOR_GUEST="${JUPYTER_CONF_DIR}/jupyter_notebook_config_guest.py"
 
 # apache dir
 SHARE_DOCUMENT_ROOT='/var/www/jupyter'
@@ -22,13 +24,20 @@ JUPYTER_SERVICE='jupyter.service'
 JUPYTER_STARTUP_SCRIPT='/usr/sbin/jupyter'
 SYSTEMD_DIR="/etc/systemd/system"
 
+JUPYTER_GUEST_SERVICE='jupyter_guest.service'
+JUPYTER_GUEST_STARTUP_SCRIPT='/usr/sbin/jupyter_guest'
+
 # Log
 JUPYTER_LOG_DIR="/var/log/jupyter"
 JUPYTER_LOG="$JUPYTER_LOG_DIR/jupyter.log"
 
+JUPYTER_GUEST_LOG_DIR="/var/log_guest/jupyter"
+JUPYTER_GUEST_LOG="$JUPYTER_GUEST_LOG_DIR/jupyter_guest.log"
+
 # Pid
 JUPYTER_PID_DIR='/var/run/jupyter'
 JUPYTER_PID_FILE="${JUPYTER_PID_DIR}/jupyter.pid"
+JUPYTER_GUEST_PID_FILE="${JUPYTER_PID_DIR}/jupyter_guest.pid"
 
 # notebook dir
 JUPYTER_NOEBOOK_DIR="${ANACONDA_ROOT}/notebooks"
