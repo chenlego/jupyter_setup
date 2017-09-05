@@ -16,6 +16,9 @@ echo "============================"
 if [[ -x $JUPYTER_LOG_DIR && -e $JUPYTER_LOG_DIR ]]; then
   rm -rf $JUPYTER_LOG_DIR
 fi
+if [[ -x $JUPYTER_GUEST_LOG_DIR && -e $JUPYTER_GUEST_LOG_DIR ]]; then
+  rm -rf $JUPYTER_GUEST_LOG_DIR
+fi
 
 echo "============================"
 echo "# Remove $JUPYTER_PID_DIR"
