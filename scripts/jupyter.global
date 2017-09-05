@@ -31,7 +31,7 @@ JUPYTER_GUEST_STARTUP_SCRIPT='/usr/sbin/jupyter_guest'
 JUPYTER_LOG_DIR="/var/log/jupyter"
 JUPYTER_LOG="$JUPYTER_LOG_DIR/jupyter.log"
 
-JUPYTER_GUEST_LOG_DIR="/var/log_guest/jupyter"
+JUPYTER_GUEST_LOG_DIR="/var/log/jupyter_guest"
 JUPYTER_GUEST_LOG="$JUPYTER_GUEST_LOG_DIR/jupyter_guest.log"
 
 # Pid
